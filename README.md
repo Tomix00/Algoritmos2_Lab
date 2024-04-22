@@ -3,7 +3,7 @@
 
 Lab00 - Ejercicios para recordar.
 
-Lab01 - Manipulacion de archivos, header files.
+Lab01 - Manipulacion de archivos, header files.[pagina a youtube](youtube.com)
 
 Lab02 - Odernacion, strings.
 
