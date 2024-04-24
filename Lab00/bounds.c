@@ -1,10 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include <limits.h>
-#include <assert.h>
-#define ARRAY_SIZE 4
 
+#define ARRAY_SIZE 4
 
 struct bound_data {
     bool is_upperbound;
@@ -15,68 +13,26 @@ struct bound_data {
 
 struct bound_data check_bound(int value, int arr[], unsigned int length) {
     struct bound_data res;
-    unsigned int i=0;
-    res.is_lowerbound = true;
-    res.is_upperbound = true;
-    res.exists = false;
-    res.where = 0;
-
-    while (i<length){
-
-        res.is_upperbound = res.is_upperbound && (value >= arr[i]);
-        res.is_lowerbound = res.is_lowerbound && (value <= arr[i]);
-
-        if (value == arr[i]){
-            res.exists = true;
-            res.where = i;
-        }
-        i++;
-    }
-
+    //
+    // TODO: COMPLETAR
+    //
     return res;
 }
 
-void pedir_arreglo(int tam, int a[]){
-    int i=0;
-
-    while (i<tam){
-        printf("Ingrese valor para la posicion %d: ",i);
-        scanf("%d",&a[i]);
-        assert((INT_MIN<a[i]) && (a[i]<INT_MAX));
-        i++;
-    }
-}
-
-int pedir_entero(){
-    int a;
-    printf("Ingrese un entero para comparar: ");
-    scanf("%d",&a);
-    return a;
-}
-
 int main(void) {
-    int a[ARRAY_SIZE];
-    pedir_arreglo(ARRAY_SIZE,a);
-    int value;
-    value = pedir_entero();
+    int a[ARRAY_SIZE] = {0, -1, 9, 4};
+    int value=9;
+    //
+    // TODO: COMPLETAR - Pedir entrada al usuario
+    //
     struct bound_data result = check_bound(value, a, ARRAY_SIZE);
-    
-    
-    if (result.exists && result.is_lowerbound){
-        printf("%d es un minimo, con posicion: %u \n", value, result.where);
-    } else if (result.is_lowerbound){
-	    printf("%d es un cota inferior. \n", value);
-    }
 
-    if (result.exists && result.is_upperbound){
-	    printf("%d es un maximo, con posicion: %u \n", value,result.where);	
-    } else if (result.is_upperbound){
-    	printf("%d es un cota superior. \n", value);
-    }
+    // TODO: REEMPLAZAR LO SIGUIENTE LUEGO POR LA SALIDA QUE PIDE EL ENUNCIADO
+    printf("%d", result.is_upperbound); // Imprime 1
+    printf("%d", result.is_lowerbound); // Imprime 0
+    printf("%u", result.exists);        // Imprime 1
+    printf("%u", result.where);         // Imprime 2
 
-    if (!result.exists && !result.is_lowerbound && !result.is_upperbound){
-	    printf("el valor no se encuentra en la lista. \n");
-    }
     return EXIT_SUCCESS;
 }
 

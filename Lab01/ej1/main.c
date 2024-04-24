@@ -41,14 +41,37 @@ char *parse_filepath(int argc, char *argv[]) {
     return result;
 }
 
-unsigned int array_from_file(int array[],
-                             unsigned int max_size,
-                             const char *filepath) {
-    //your code here!!!
+
+unsigned int array_from_file(int array[],unsigned int max_size,const char *filepath) {
+    FILE *fp = fopen(filepath,"r");
+    unsigned int tamaño;
+    fscanf(fp,"%u",&tamaño);//primera fila->  tamaño del array
+
+    assert(tamaño<max_size);
+
+    for (unsigned int i=0;i<tamaño;i++){
+        fscanf(fp,"%d",&array[i]);
+    }
+
+    fclose(fp);
+    return tamaño;
+    /*
+    1234f56
+    
+    fscanf(referencia del arhivo, que quiero que lea %d %c..., donde quiero que lo guarde)
+    fscanf() iterado una ves mueve el "puntero" al segundo item que contenga el archivo
+    |1234 -> 1|234
+    cuando se lee el arhivo, no toma en cuenta los saltos de linea, por lo tanto es toda una fila de elementos
+    
+    */
 }
 
 void array_dump(int a[], unsigned int length) {
-    //your code here!!!
+    printf("[");
+    for (unsigned int i=0;i<length;i++){
+        printf("%d,",a[i]);
+    }
+    printf("]\n");
 }
 
 
@@ -57,15 +80,15 @@ int main(int argc, char *argv[]) {
 
     /* parse the filepath given in command line arguments */
     filepath = parse_filepath(argc, argv);
-    
+
     /* create an array of MAX_SIZE elements */
     int array[MAX_SIZE];
-    
+
     /* parse the file to fill the array and obtain the actual length */
     unsigned int length = array_from_file(array, MAX_SIZE, filepath);
-    
+
     /*dumping the array*/
     array_dump(array, length);
-    
+
     return EXIT_SUCCESS;
 }
