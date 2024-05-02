@@ -8,37 +8,36 @@ struct _counter {
 };
 
 counter counter_init(void) {
-/*
-    Needs implementation.
-*/
+    counter new = NULL;
+    new = malloc(size_of(struct _counter));
+    new->count=0;
+    assert(counter_is_init(new));
+
+    return new;
 }
 
 void counter_inc(counter c) {
-/*
-    Needs implementation.
-*/
+    c->count ++;
 }
 
 bool counter_is_init(counter c) {
-/*
-    Needs implementation.
-*/
+    
+    return (c->count==0);
 }
 
 void counter_dec(counter c) {
-/*
-    Needs implementation.
-*/
+    assert(!counter_is_init(c));
+    c->count--;
 }
 
 counter counter_copy(counter c) {
-/*
-    Needs implementation.
-*/
+    counter copy=NULL;
+    copy = malloc(size_of(struct _counter));
+    copy->count = c->count;
+    return copy;
 }
 
 void counter_destroy(counter c) {
-/*
-   Needs implementation.
-*/
+    free(c);
+    c = NULL;
 }

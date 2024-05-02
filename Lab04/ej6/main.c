@@ -41,6 +41,7 @@ bool matching_parentheses(FILE * file) {
     counter c = NULL;
     bool balanced = true;
     char letter;
+    c = counter_init();
 
     while (!feof(file) && balanced) {
         letter = fgetc(file);
@@ -51,6 +52,10 @@ bool matching_parentheses(FILE * file) {
         } else if (letter == ')') {
             counter_dec(c);
         }
+    }
+
+    if(balanced && counter_is_init(c)){
+        counter_destroy(c);
     }
     return (balanced && counter_is_init(c));
 }

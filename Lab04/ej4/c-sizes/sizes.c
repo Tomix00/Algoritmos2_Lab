@@ -20,13 +20,20 @@ int main(void) {
     printf("name-size  : %lu bytes\n"
            "age-size   : %lu bytes\n"
            "height-size: %lu bytes\n"
-           "data_t-size: %lu bytes\n", /* COMPLETAR */);
+           "data_t-size: %lu bytes\n",sizeof(messi.name),
+                                      sizeof(messi.age),
+                                      sizeof(messi.height),
+                                      sizeof(data_t));
+    
+    data_t *p=NULL;
+    printf("data name size    : %p bytes\n"
+           "data age size     : %p bytes\n"
+           "data height size  : %p bytes\n", (void *)(&p->name),
+                                             (void *)(&p->age),
+                                             (void *)(&p->height));
 
-    /*
-     *
-     * COMPLETAR
-     *
-     */
+
     return EXIT_SUCCESS;
 }
+
 
