@@ -4,7 +4,7 @@
 struct s_pair_t{
     int fst;
     int snd;
-}
+};
 
 pair_t pair_new(int x, int y){
     pair_t p=NULL;
