@@ -37,7 +37,7 @@ char *string_filter(const char *str, char c){
     return str_ret;
 }
 
-bool string_is_symetric(const char *str){
+bool string_is_symmetric(const char *str){
     size_t size = string_length(str)-1;
     size_t i = 0;
     bool ver = true;

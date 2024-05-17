@@ -6,8 +6,8 @@
 #define MAX_LENGTH 1820
 
 char *string_clone(const char *str, size_t length) {
-    char clon[MAX_LENGTH];
-    char *output=clon;
+    char *output = malloc(sizeof(char)*length);
+
     for (size_t i=0; i<length;i++) {
         output[i] = str[i];
     }
@@ -57,7 +57,8 @@ int main(void) {
     char *copy=NULL;
 
     copy = string_clone(original, sizeof(original)/sizeof(*original));
-    printf("Original:\n" ANSI_CYAN
+    /*sizeof(original)/sizeof(*original) = 1812/1 */
+        printf("Original:\n" ANSI_CYAN
             " %s\n", original);
     copy[0] = 'A';
     copy[1] = ' ';
@@ -68,6 +69,16 @@ int main(void) {
     printf("Copia   :\n" ANSI_CYAN
            " %s\n", copy);
 
+    free(copy);
     return EXIT_SUCCESS;
 }
 
+/*
+el problema que tenia, es que estaba remplazando caracteres
+de copy, siendo que, como copy fue creado dentro de una 
+funcion estaba en el stack, de modo que al salir de la misma
+ya no existe.
+
+debido a esta correcion, se tuvo que agregar "free(copy)", ya
+que se reservo memoria para el mismo.
+*/

@@ -5,25 +5,19 @@
 
 #define MAX_LENGTH 1820
 
-char *string_clone(const char *str) {
-    char *output=NULL;
-    size_t len = strlen(str)+1;
-    output = malloc(sizeof(char)*len);
-    
-    for(unsigned int i=0u;i<len;i++){
-        output[i]=str[i];
+char *string_clone(const char *str, size_t length) {
+    char *output = malloc(sizeof(char)*length);
+
+    for (size_t i=0; i<length;i++) {
+        output[i] = str[i];
     }
-    
-    /*
-     * COMPLETAR
-     *
-     */
+    output[length] = '\0';
     return output;
 }
 
 
 int main(void) {
-    char original[]=""
+    char *original =""
          "______ time ago in a galaxy far, far away...\n\n\n"
          ANSI_BRGOLD
          "         _______..___________.     ___      .______             \n"
@@ -61,9 +55,10 @@ int main(void) {
          "                to    assist    the   overwhelmed\n"
          "                Jedi....\n" ANSI_WHITE;
     char *copy=NULL;
-
-    copy = string_clone(original);
-    printf("Original:\n" ANSI_CYAN
+       
+    copy = string_clone(original, strlen(original)/sizeof(*original));
+    /*strlen(original)/sizeof(*original) = 1812/1 */
+        printf("Original:\n" ANSI_CYAN
             " %s\n", original);
     copy[0] = 'A';
     copy[1] = ' ';
@@ -73,7 +68,13 @@ int main(void) {
     copy[5] = 'g';
     printf("Copia   :\n" ANSI_CYAN
            " %s\n", copy);
+
     free(copy);
     return EXIT_SUCCESS;
 }
 
+/*
+en el calculo original de lo que recive length, se tenia
+size_of(original)/sizeof(*original), pero como origical es un puntero a char,
+size_of(original) -> devuelve otro tamaño distinto del tamaño del string
+*/
