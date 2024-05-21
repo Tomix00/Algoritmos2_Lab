@@ -79,4 +79,3 @@ stack stack_destroy(stack s);
 
 
 #endif
-
