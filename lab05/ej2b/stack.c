@@ -6,9 +6,11 @@
 struct _s_stack{
     stack_elem elem;
     stack next;
+    unsigned int size;
 };
 
 stack stack_empty(){
+
     return NULL;
 }
 
@@ -19,6 +21,11 @@ stack stack_push(stack s , stack_elem e){
     new_stack = malloc(sizeof(struct _s_stack));    
     new_stack->elem = e;
     new_stack->next = s;
+    if(s==NULL){
+        new_stack->size=1;
+    }else{
+        new_stack->size = s->size+1;
+    }
 
     return new_stack;
 }
@@ -35,12 +42,10 @@ stack stack_pop(stack s){
 }
 
 unsigned int stack_size(stack s){
-    stack ptr_stack = s;
     unsigned int size=0;
     
-    while(ptr_stack != NULL){
-        ptr_stack = ptr_stack->next;
-        size++;
+    if(s!=NULL){
+        size = s->size;
     }
     return size;
 }
