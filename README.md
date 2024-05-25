@@ -10,3 +10,5 @@ Lab02 - Odernacion, strings. ( [Lab02_pdf](https://docs.google.com/document/d/1x
 Lab03 - Matrices,arrelgos con elementos de tipo struct, tipos enum, stdout, lectura robusta de archivos. ( [Lab03_pdf](https://docs.google.com/document/d/1tjmBmluA1YM5Yd8t6OnxlmRg6PTUNnWJg7hXu9aMHWU/export?format=pdf) )
 
 Lab04 - Punteros y TADs, memoria dinamica(malloc(),calloc(),free()). ( [Lab04_pdf](https://docs.google.com/document/d/1n_2_xr5CHZEeC3Qb9WH2lYwujs87rMRgDjpleHUMACI/export?format=pdf) )
+
+Lab05 - Pilas y Colas. ( [Lab05_pdf](https://docs.google.com/document/d/1WBXXFcBzdclTXuP12viMp8Iaa1bBWe3IoEIAyIvo2Z4/export?format=pdf) )
