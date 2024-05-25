@@ -5,16 +5,9 @@
 #include "stack.h"
 #include "hanoi.h"
 
-static void move(unsigned int current,
-        hanoi_t hanoi,
-        stack *source_ptr,
-        stack *target_ptr,
-        stack *aux_ptr
-    );
+static void move(unsigned int current,hanoi_t hanoi,stack *source_ptr,stack *target_ptr,stack *aux_ptr);
 
-static void print(stack source, stack aux, stack target,
-    unsigned int disk_count);
-
+static void print(stack source, stack aux, stack target,unsigned int disk_count);
 
 struct _hanoi {
     stack source;
@@ -26,18 +19,20 @@ struct _hanoi {
 hanoi_t hanoi_init(unsigned int disk_count) {
     hanoi_t hanoi = malloc(sizeof(struct _hanoi));
     assert(hanoi != NULL);
+
+    hanoi->source = stack_empty();
     hanoi->aux = stack_empty();
-    hanoi->target = NULL;
+    hanoi->target = stack_empty();
     hanoi->disk_count = disk_count;
+
     for (unsigned int i = disk_count; i > 0; --i) {
         hanoi->source = stack_push(hanoi->source, i);
     }
     return hanoi;
 }
 
-void hanoi_solve(hanoi_t hanoi) {
-    move(hanoi->disk_count, hanoi, &hanoi->source,
-        &hanoi->target, &hanoi->aux);
+void hanoi_solve(hanoi_t hanoi){
+    move(hanoi->disk_count, hanoi, &hanoi->source,&hanoi->target, &hanoi->aux);
 }
 
 void hanoi_print(hanoi_t hanoi) {
@@ -46,16 +41,15 @@ void hanoi_print(hanoi_t hanoi) {
 
 hanoi_t hanoi_destroy(hanoi_t hanoi) {
     assert(hanoi != NULL);
+    hanoi->source = stack_destroy(hanoi->source);
+    hanoi->aux = stack_destroy(hanoi->aux);
+    hanoi->target = stack_destroy(hanoi->target);
     free(hanoi);
+    hanoi = NULL;
     return NULL;
 }
 
-static void move(unsigned int current,
-    hanoi_t hanoi,
-    stack *source_ptr,
-    stack *target_ptr,
-    stack *aux_ptr
-    ) {
+static void move(unsigned int current,hanoi_t hanoi,stack *source_ptr,stack *target_ptr,stack *aux_ptr) {
     if (current > 0) {
         move(current - 1, hanoi, source_ptr, aux_ptr, target_ptr);
         stack_elem elem = stack_top(*source_ptr);
@@ -104,14 +98,7 @@ static char *position_str(stack_elem *arr, int length, int position) {
     return result;
 }
 
-static void print_disks(stack_elem *arr_a,
-    unsigned int length_a,
-    stack_elem *arr_b,
-    unsigned int length_b,
-    stack_elem *arr_c,
-    unsigned int length_c,
-    int position,
-    int width) {
+static void print_disks(stack_elem *arr_a,unsigned int length_a,stack_elem *arr_b,unsigned int length_b,stack_elem *arr_c,unsigned int length_c,int position,int width) {
     if (position >= 0) {
         char *value_a = position_str(arr_a, length_a, position);
         char *value_b = position_str(arr_b, length_b, position);
@@ -139,18 +126,19 @@ static void print_disks(stack_elem *arr_a,
     }
 }
 
-static void print(stack source, stack aux, stack target,
-    unsigned int disk_count) {
+static void print(stack source, stack aux, stack target,unsigned int disk_count) {
     stack_elem *arr1 = stack_to_array(source);
     stack_elem *arr2 = stack_to_array(aux);
     stack_elem *arr3 = stack_to_array(target);
+
     const unsigned int length1 = stack_size(source);
     const unsigned int length2 = stack_size(aux);
     const unsigned int length3 = stack_size(target);
     const unsigned int position = disk_count;
     const unsigned int width = 2 * disk_count;
-    print_disks(arr1, length1, arr2, length2, arr3, length3,
-        position, width);
+
+    print_disks(arr1, length1, arr2, length2, arr3, length3,position, width);
+
     free(arr1);
     free(arr2);
     free(arr3);

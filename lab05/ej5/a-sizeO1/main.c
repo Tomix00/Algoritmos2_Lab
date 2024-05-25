@@ -57,9 +57,8 @@ int main(int argc, char *argv[]) {
     printf("length: %u\n", queue_size(q));
     queue_dump(q, stdout);
     
-    // 
-    // COMPLETAR: Liberar la memoria usada por <q>
-    //
+    q = queue_destroy(q);
+    
     return EXIT_SUCCESS;
 }
 

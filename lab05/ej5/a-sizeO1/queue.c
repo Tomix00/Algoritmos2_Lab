@@ -6,9 +6,7 @@
 #include "queue.h"
 
 struct s_queue {
-    /*
-     * COMPLETAR
-     */
+    unsigned int size;
     struct s_node *first;
 };
 
@@ -17,8 +15,7 @@ struct s_node {
     struct s_node *next;
 };
 
-static struct s_node *
-create_node(queue_elem e) {
+static struct s_node *create_node(queue_elem e) {
     struct s_node *new_node=malloc(sizeof(struct s_node));
     assert(new_node!=NULL);
     new_node->elem = e;
@@ -26,26 +23,24 @@ create_node(queue_elem e) {
     return new_node;
 }
 
-static struct s_node *
-destroy_node(struct s_node *node) {
+static struct s_node *destroy_node(struct s_node *node) {
     node->next=NULL;
     free(node);
     node=NULL;
     return node;
 }
 
-
-static bool
-invrep(queue q) {
+static bool invrep(queue q) {
     return q != NULL;
 }
 
 queue queue_empty(void) {
     queue q=NULL;
-    /*
-     * COMPLETAR
-     *
-     */
+    q = malloc(sizeof(struct s_queue));
+
+    q->size = 0;
+    q->first = NULL;
+
     assert(invrep(q) && queue_is_empty(q));
     return q;
 }
@@ -53,13 +48,20 @@ queue queue_empty(void) {
 queue queue_enqueue(queue q, queue_elem e) {
     assert(invrep(q));
     struct s_node *new_node = create_node(e);
+
     if (q->first==NULL) {
+
         q->first = new_node;
+
     } else {
-        /*
-         * COMPLETAR
-         *
-         */
+
+        struct s_node *aux = q->first;
+        while(aux->next != NULL){
+            aux = aux->next;
+        }
+        aux->next = new_node;
+        q->size++;
+
     }
     assert(invrep(q) && !queue_is_empty(q));
     return q;
@@ -74,13 +76,11 @@ queue_elem queue_first(queue q) {
     assert(invrep(q) && !queue_is_empty(q));
     return q->first->elem;
 }
+
 unsigned int queue_size(queue q) {
     assert(invrep(q));
-    unsigned int size=0;
-    /*
-     * COMPLETAR
-     *
-     */
+    unsigned int size = q->size;
+    
     return size;
 }
 
