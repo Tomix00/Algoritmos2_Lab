@@ -26,32 +26,32 @@ static orientation_t inverse(rqueue_t q) {
 }
 
 rqueue_t rqueue_empty() {
-    rqueue_t new_rq;
-    new_rq = NULL;
-    new_rq = malloc(sizeof(struct _rqueue_t));
+    rqueue_t new_rqueue;
+    new_rqueue = NULL;
+    new_rqueue = malloc(sizeof(struct _rqueue_t));  //must free after all nodes are freed
 
-    new_rq->extreme[0]=NULL;
-    new_rq->extreme[1]=NULL;
-    
-    new_rq->orientation = 0;
+    new_rqueue->extreme[0] = NULL;  //left corner 
+    new_rqueue->extreme[1] = NULL;  //right corner
+    new_rqueue->orientation = 0;    //from left to right(->)
 
-
-    return new_rq;
+    return new_rqueue;
 }
 
 bool rqueue_is_empty(rqueue_t q) {
     bool b;
-    b = (q->extreme[0] == NULL);
+
+    b = (q->extreme[0]==NULL && q->extreme[1]==NULL);
+
     return b;
 }
 
 static node_t create_node(elem_t e) {
     node_t new_node;
-    new_node = NULL;    
-    new_node = malloc(sizeof(struct _node_t));
+    new_node = NULL;
+    new_node = malloc(sizeof(struct _node_t));  //must free before free rqueue
 
-    new_node->links[0]=NULL;
-    new_node->links[1]=NULL;
+    new_node->links[0] = NULL;
+    new_node->links[1] = NULL;
     new_node->value = e;
 
     return new_node;
@@ -64,27 +64,26 @@ rqueue_t rqueue_enqueue(rqueue_t q, elem_t e) {
     orientation_t next;
     orientation_t fst;
     orientation_t lst;
-    
-    fst = current(q);
-    lst = inverse(q);
+
     prev = current(q);
     next = inverse(q);
+    fst = current(q);
+    lst = inverse(q);
 
     assert(q != NULL);
+
     new_node = create_node(e);
     
     if(rqueue_is_empty(q)) {
-        q->extreme[prev] = new_node;
+        q->extreme[fst] = new_node;
         q->extreme[lst] = new_node;
-        
     }
     else {
-        aux = q->extreme[fst];
-        new_node->links[prev] = NULL;
-        new_node->links[next] = aux; 
-        aux->links[prev] = new_node;
-        q->extreme[fst] = new_node;
-
+        aux = q->extreme[lst];
+        aux->links[next] = new_node;    //add the new node on the far right
+        new_node->links[prev] = aux;    //set the previous node of new_node to be the actual one
+        new_node->links[next] = NULL;
+        q->extreme[lst] = new_node;        
     }
     return q;
 }
@@ -92,40 +91,43 @@ rqueue_t rqueue_enqueue(rqueue_t q, elem_t e) {
 elem_t rqueue_fst(rqueue_t q) {
     assert(q != NULL);
     assert(!rqueue_is_empty(q));
-    return q->extreme[current(q)]->value;
+
+    elem_t fst;
+    fst = q->extreme[current(q)]->value;
+
+    return fst;
 }
 
 void rqueue_dequeue(rqueue_t q) {
     assert(q != NULL);
     assert(!rqueue_is_empty(q));
-    
+
     orientation_t prev;
     orientation_t next;
     orientation_t fst;
     orientation_t lst;
 
-    fst = current(q);
-    lst = inverse(q);
     prev = current(q);
     next = inverse(q);
+    fst = current(q);
+    lst = inverse(q);
 
-    node_t aux1 = NULL;
-    node_t aux2 = NULL;
-
-    aux1 = q->extreme[fst]; 
-    aux2 = aux1->links[next];
     
-    if(q->extreme[fst] == q->extreme[lst]){
-        free(aux1);
+    if(q->extreme[fst] == q->extreme[lst]){ //has only one element left
+        free(q->extreme[fst]);
         q->extreme[fst] = NULL;
         q->extreme[lst] = NULL;
         
-    }else{
-        free(aux2->links[prev]);
-        aux2->links[prev] = NULL;
-        q->extreme[fst] = aux2; 
+    }else{  //has more than one element
+        node_t aux;
+        node_t aux2;
+        aux = q->extreme[lst];
+        aux2 = aux->links[prev];
+        free(aux);
+        aux2->links[next] = NULL;
+        q->extreme[lst] = aux2;        
     }
-    
+
 }
 
 void rqueue_revert(rqueue_t q) {
@@ -136,9 +138,10 @@ rqueue_t rqueue_destroy(rqueue_t q) {
     while(!(rqueue_is_empty(q))){
         rqueue_dequeue(q);
     }
+
     free(q);
     q = NULL;
-
+    
     return q;
 }
 

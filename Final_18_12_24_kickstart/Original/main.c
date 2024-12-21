@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "rqueue.h"
 #include "helpers.h"
 
@@ -41,6 +42,7 @@ int read_int() {
     return e;
 }
 
+//opcion e
 rqueue_t on_enqueue(rqueue_t q) {
     int e;
     printf("\n Inserte un entero: \n");
@@ -50,6 +52,7 @@ rqueue_t on_enqueue(rqueue_t q) {
     return q;
 }
 
+//opcion d
 void on_dequeue(rqueue_t q) {
     if(!rqueue_is_empty(q)) {
         rqueue_dequeue(q);
@@ -57,6 +60,7 @@ void on_dequeue(rqueue_t q) {
     rqueue_dump(q);
 }
 
+//opcion r
 void on_revert(rqueue_t q) {
     rqueue_revert(q);
     rqueue_dump(q);
@@ -77,4 +81,7 @@ int main(void) {
         }
     } while(c != OPTION_EXIT);
     r = rqueue_destroy(r);
+    assert(r==NULL);
+
+    return 0;
 }

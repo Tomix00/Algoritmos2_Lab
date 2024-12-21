@@ -4,7 +4,6 @@
 #include <stdio.h>
 
 
-
 char *readline(FILE *file);
 
 char *readline_from_stdin(void);
