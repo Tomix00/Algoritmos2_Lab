@@ -1,6 +1,13 @@
 # Algoritmos2_Lab
 
+---
+MyPrompt : 
+```bash
+PS1='\[\e[33m\](\d)\[\e[32m\][\u@\h]\[\e[34m\] \W\[\e[0m\] : '
 
+(hs:min)[user@host]{jobs:} working_directory : 
+```
+---
 Lab00 - Ejercicios para recordar. ( [Lab00_pdf](https://docs.google.com/document/d/1TcyldtTLxZlCLreVn9Yc6TEJLaH3Jzqk8LFouOfd44Y/export?format=pdf) )
 
 Lab01 - Manipulacion de archivos, header files. ( [Lab01_pdf](https://docs.google.com/document/d/10nXuPMwI21OkTvzieGOM_Dzw52SX6pef0T1CPj9sB8Q/export?format=pdf) )
@@ -17,3 +24,8 @@ Lab05 - Pilas y Colas. ( [Lab05_pdf](https://docs.google.com/document/d/1fMibtuI
 parcial_1 - Lab02 y Lab03
 
 parcial_2 - Lab04 y Lab05
+
+---
+Final_18_12_24_kickstart - rqueue ( lista doble enlazada )
+
+Final_13_02_2025_kickstart - sorteddeck ( cartas ordenadas )
