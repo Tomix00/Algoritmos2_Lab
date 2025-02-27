@@ -21,9 +21,9 @@ Lab04 - Punteros y TADs, memoria dinamica(malloc(),calloc(),free()). ( [Lab04_pd
 Lab05 - Pilas y Colas. ( [Lab05_pdf](https://docs.google.com/document/d/1fMibtuIQ4S2Tr3v6ajqrupq4NSlIn-LG_HjAUnwO_DQ/export?format=pdf) )
 
 ---
-parcial_1 - Lab02 y Lab03
+parcial_1 - Lab02 y Lab03 - batalla naval
 
-parcial_2 - Lab04 y Lab05
+parcial_2 - Lab04 y Lab05 - pokerDeck
 
 ---
 Final_18_12_24_kickstart - rqueue ( lista doble enlazada )
