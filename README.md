@@ -3,7 +3,7 @@
 ---
 MyPrompt : 
 ```bash
-PS1='\[\e[33m\](\d)\[\e[32m\][\u@\h]\[\e[34m\] \W\[\e[0m\] : '
+PS1='\[\e[33m\](\A)\[\e[32m\][\u@\h]\[\e[34m\]\[\e[35m\]{jobs:\j}\[\e[34m\] \W\[\e[0m\] : '
 
 (hs:min)[user@host]{jobs:} working_directory : 
 ```
