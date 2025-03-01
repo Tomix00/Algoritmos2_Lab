@@ -26,6 +26,8 @@ parcial_1 - Lab02 y Lab03 - batalla naval
 parcial_2 - Lab04 y Lab05 - pokerDeck
 
 ---
-Final_18_12_24_kickstart - rqueue ( lista doble enlazada )
+1_Final_18_12_2024 - rqueue ( lista doble enlazada )
 
-Final_13_02_2025_kickstart - sorteddeck ( cartas ordenadas )
+2_Final_13_02_2025 - sorteddeck ( cartas ordenadas )
+
+3_Final_26_02_2025 - ugraph ( grafo unario )
