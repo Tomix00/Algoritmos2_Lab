@@ -9,18 +9,17 @@ PS1='\[\e[33m\](\A)\[\e[32m\][\u@\h]\[\e[34m\]\[\e[35m\]{jobs:\j}\[\e[34m\] \W\[
 ---
 Lab00 - Ejercicios para recordar. ( [Lab00_pdf](https://docs.google.com/document/d/1TcyldtTLxZlCLreVn9Yc6TEJLaH3Jzqk8LFouOfd44Y/export?format=pdf) )
 
-<div align='center'>
+
 
 | Lab00       | Descripcion                                       |
 |-------------|---------------------------------------------------|
 | Bounds :    | Structs, verifica bound de un valor en un arreglo |
 | TicTacToe : | Arreglo multidimensional, juego de tateti         |
 
-</div>
 
 Lab01 - Manipulacion de archivos, header files. ( [Lab01_pdf](https://docs.google.com/document/d/10nXuPMwI21OkTvzieGOM_Dzw52SX6pef0T1CPj9sB8Q/export?format=pdf) )
 
-<div align='center'>
+
 
 | Lab01 | Descripcion                   |
 |-------|-------------------------------|
@@ -31,11 +30,10 @@ Lab01 - Manipulacion de archivos, header files. ( [Lab01_pdf](https://docs.googl
 | Ej5 : | mybool.h                      |
 | Ej6 : | ordenar el array del file     |
 
-</div>
 
 Lab02 - Odernacion, strings. ( [Lab02_pdf](https://docs.google.com/document/d/1xVlPuPaw5SzcwXf8Ua3MD-vkH5eVQ22plLj9boCO0Zs/export?format=pdf) )
 
-<div align='center'>
+
 
 | Lab02 | Descripcion                  |
 |-------|------------------------------|
@@ -46,11 +44,10 @@ Lab02 - Odernacion, strings. ( [Lab02_pdf](https://docs.google.com/document/d/1x
 | Ej4 : | selection, insertion y quick |
 | Ej5 : | quick sort con goes_before   |
 
-</div>
 
 Lab03 - Matrices, arrelgos con elementos de tipo struct, tipos enum, stdout, lectura robusta de archivos. ( [Lab03_pdf](https://docs.google.com/document/d/1tjmBmluA1YM5Yd8t6OnxlmRg6PTUNnWJg7hXu9aMHWU/export?format=pdf) )
 
-<div align='center'>
+
 
 | Lab03 | Descripcion                        |
 |-------|------------------------------------|
@@ -58,11 +55,10 @@ Lab03 - Matrices, arrelgos con elementos de tipo struct, tipos enum, stdout, lec
 | Ej2 : | weather, arreglo multi-dimensional |
 | Ej3 : | sort by rank                       |
 
-</div>
 
 Lab04 - Punteros y TADs, memoria dinamica(malloc(),calloc(),free()). ( [Lab04_pdf](https://docs.google.com/document/d/1n_2_xr5CHZEeC3Qb9WH2lYwujs87rMRgDjpleHUMACI/export?format=pdf) )
 
-<div align='center'>
+
 
 | Lab04 | Descripcion                      |
 |-------|----------------------------------|
@@ -74,11 +70,10 @@ Lab04 - Punteros y TADs, memoria dinamica(malloc(),calloc(),free()). ( [Lab04_pd
 | Ej6 : | TAD counter                      |
 | Ej7 : | TAD list                         |
 
-</div>
 
 Lab05 - Pilas y Colas. ( [Lab05_pdf](https://docs.google.com/document/d/1fMibtuIQ4S2Tr3v6ajqrupq4NSlIn-LG_HjAUnwO_DQ/export?format=pdf) )
 
-<div align='center'>
+
 
 | Lab05  | Descripcion                                                           |
 |--------|-----------------------------------------------------------------------|
@@ -89,7 +84,6 @@ Lab05 - Pilas y Colas. ( [Lab05_pdf](https://docs.google.com/document/d/1fMibtuI
 | Ej4 :  | hanoi with TAD stack                                                  |
 | Ej5 :  | TAD queue                                                             |
 
-</div>
 
 ---
 parcial_1 - Lab02 y Lab03 - batalla naval
